@@ -27,11 +27,11 @@ def search_dict_for_pokemon(binary_hint, hint, all_hint_combinations):
             return pokemon
 
 def main():
-    with open('all_hint_combinations.pkl', 'rb') as f:
+    with open('data/all_hint_combinations.pkl', 'rb') as f:
         # Unload pickle
         loaded_all_hint_combinations = pickle.load(f)
 
-    hint = "w_l_i_g _a_e"
+    hint = "__-r___"
     binary_hint = convert_to_binary(hint)
 
     solution = search_dict_for_pokemon(binary_hint, hint, loaded_all_hint_combinations)

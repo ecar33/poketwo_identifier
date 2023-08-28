@@ -5,7 +5,7 @@ import pickle
 pokemon_name_and_length = []
 all_hint_combinations = {}
 
-with open('pokemon_names.json', 'r') as json_file:
+with open('data/pokemon_names.json', 'r') as json_file:
 
     for line in json_file:
         parsed_json = json.loads(line.strip())
@@ -24,7 +24,7 @@ for name, size in pokemon_name_and_length:
 
 
 # Serialize (save)
-with open('all_hint_combinations.pkl', 'wb') as f:
+with open('data/all_hint_combinations.pkl', 'wb') as f:
     pickle.dump(all_hint_combinations, f)
 
 
