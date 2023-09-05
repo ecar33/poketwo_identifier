@@ -1,4 +1,5 @@
 import pickle
+import re
 
 def convert_to_binary(hint):
     binary_hint = ''
@@ -26,17 +27,26 @@ def search_dict_for_pokemon(binary_hint, hint, all_hint_combinations):
         if match:
             return pokemon
 
-def main():
+def capture_pokemon_hint(hint_string):
+    match = re.search("The pokémon is (.+?)\.", hint_string)
+    hint = match.group(1)
+    return hint
+
+
+def main(hint):
     with open('data/all_hint_combinations.pkl', 'rb') as f:
         # Unload pickle
         loaded_all_hint_combinations = pickle.load(f)
 
-    hint = "__-r___"
+    # For testing as a script directly
+    # hint_string = "The pokémon is F___zen."
+    # hint = capture_pokemon_hint(hint_string)
+
     binary_hint = convert_to_binary(hint)
 
     solution = search_dict_for_pokemon(binary_hint, hint, loaded_all_hint_combinations)
-    print(solution)
 
+    return solution
 
 if __name__ == "__main__":
     main()
